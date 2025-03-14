@@ -1,6 +1,6 @@
 import {prisma} from '@/lib/db';
 
-export default async function PostDetail({params} : any){
+export default async function PostDetail({ params }: { params: { slug: string } }){
     const { slug } = await params
     const post = await prisma.post.findFirst({
         where:{
