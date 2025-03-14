@@ -11,12 +11,24 @@ datasource db {
 }
 
 
+model User{
+  id String @id @default(uuid())
+  email String @unique
+  hashedPassword String
+  post Post[]
+}
+
+
 model Post{
   id String @id @default(uuid())
   title String
-  slug String
+  slug String  @unique
   content String
   published Boolean? @default(false)
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt
+  author User @relation(fields: [authorId], references: [id])
+  authorId String
+
+  @@index(slug)
 }
