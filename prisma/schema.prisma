@@ -32,3 +32,10 @@ model Post{
 
   @@index(slug)
 }
+
+
+model Blog{
+  id String @id @default(uuid())
+  title String
+  content String
+}
