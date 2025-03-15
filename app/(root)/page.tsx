@@ -7,11 +7,17 @@ export default async function Page(){
     }
     return<>
             <div className='body-container'>
-            {
-                posts?.map((item, index) => (
-                    <p key={index}>{item.content}</p>
-                ))
-            }
+                <div className='card-main-container'>
+                    {
+                        posts?.map((item, index) => (
+                            <div className='card-container' key={index}>
+                                <h1>{item.title}</h1>
+                                <p>{item.content}</p>
+                                <button>Show More</button>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
     </>
 }
